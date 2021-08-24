@@ -47,11 +47,53 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\LibraryContext.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\BorrowedForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\BorrowedForm.Designer.cs">
+      <DependentUpon>BorrowedForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MyBooksForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MyBooksForm.Designer.cs">
+      <DependentUpon>MyBooksForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RegisterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RegisterForm.Designer.cs">
+      <DependentUpon>RegisterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\WantedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WantedForm.Designer.cs">
+      <DependentUpon>WantedForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\WhoBorrowsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WhoBorrowsForm.Designer.cs">
+      <DependentUpon>WhoBorrowsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202108222320046_AddModelsToDB.cs" />
     <Compile Include="Migrations\202108222320046_AddModelsToDB.designer.cs">
@@ -63,6 +105,30 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\BorrowedForm.resx">
+      <DependentUpon>BorrowedForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MyBooksForm.resx">
+      <DependentUpon>MyBooksForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RegisterForm.resx">
+      <DependentUpon>RegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WantedForm.resx">
+      <DependentUpon>WantedForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WhoBorrowsForm.resx">
+      <DependentUpon>WhoBorrowsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108222320046_AddModelsToDB.resx">
       <DependentUpon>202108222320046_AddModelsToDB.cs</DependentUpon>
     </EmbeddedResource>
