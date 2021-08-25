@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 namespace MyLibraryEF.Data
 {
@@ -17,9 +13,10 @@ namespace MyLibraryEF.Data
 
         public int GetAmountOfBooks(int userID)
         {
-            int result = _libContext.Books.Where(book => book.UserId == userID).Count();
+            int resultBooks = _libContext.Books.Where(book => book.UserId==userID && book.ToBuy=="Nie").Count();
+            int resultBorrowed = _libContext.BorrowedBooks.Where(book => book.UserId==userID).Count();
 
-            return result;
+            return resultBooks + resultBorrowed;
         }
 
         public int GetUserId(string userName, string password)

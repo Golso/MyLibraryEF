@@ -3,6 +3,7 @@ using MyLibraryEF.Models;
 using System;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace MyLibraryEF.Forms
@@ -12,6 +13,7 @@ namespace MyLibraryEF.Forms
         private int currentId = 0;
         private readonly int userId;
         private readonly LibraryContext libContext;
+        private readonly SqlLibraryRepo libCommand;
 
         public BorrowedForm(int userId)
         {
@@ -20,18 +22,24 @@ namespace MyLibraryEF.Forms
             InitializeComponent();
 
             libContext = new LibraryContext();
+            libCommand = new SqlLibraryRepo(libContext);
 
-            //SetMode(SqlDataAccess.GetUserState(userID));
+            SetMode(libCommand.GetUserState(userId));
 
             LoadBorrowed();
         }
 
         private void LoadBorrowed()
         {
-            //DataSet ds = SqlDataAccess.LoadBooksBorrowed(userID);
+            BindingSource bi = new BindingSource();
 
-            //dataGridViewBorrowed.DataSource = null;
-            //dataGridViewBorrowed.DataSource = ds.Tables[0];
+            var query = libContext.BorrowedBooks.Where(book => book.UserId == userId)
+                .Select(book => new { book.Id, book.Title, book.Author, book.ToWhom }).ToList();
+
+            bi.DataSource = query;
+
+            dataGridViewBorrowed.DataSource = null;
+            dataGridViewBorrowed.DataSource = bi;
         }
 
         private void BtnReturn_Click(object sender, EventArgs e)
@@ -44,11 +52,9 @@ namespace MyLibraryEF.Forms
                 UserId = userId
             };
 
-            //SqlDataAccess.SaveBook(book);
             libContext.Books.Add(book);
-            //SqlDataAccess.DeleteBorrowedBook(currentId);
-
-
+            BorrowedBook returnedBook = libContext.BorrowedBooks.Find(currentId);
+            libContext.BorrowedBooks.Remove(returnedBook);
             libContext.SaveChanges();
 
             currentId = 0;

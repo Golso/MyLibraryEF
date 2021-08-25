@@ -24,16 +24,24 @@ namespace MyLibraryEF.Forms
 
         private void BtnOK_Click(object sender, EventArgs e)
         {
-            bookBorrowed.ToWhom = txtBoxWho.Text;
-            
-            libContext.BorrowedBooks.Add(bookBorrowed);
-            var book = libContext.Books.Find(currentId);
-            libContext.Books.Remove(book);
-            libContext.SaveChanges();
+            if (txtBoxWho.Text != string.Empty)
+            {
+                bookBorrowed.ToWhom = txtBoxWho.Text;
 
-            form.LoadBooksList();
+                libContext.BorrowedBooks.Add(bookBorrowed);
+                var book = libContext.Books.Find(currentId);
+                libContext.Books.Remove(book);
+                libContext.SaveChanges();
 
-            Hide();
+                form.LoadBooksList();
+
+                Hide();
+            }
+            else
+            {
+                MessageBox.Show("Podanie nazwy pożyczającego jest wymagane.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
         }
 
         private void BtnClose_Click(object sender, EventArgs e)

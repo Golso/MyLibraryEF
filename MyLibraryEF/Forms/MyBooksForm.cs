@@ -34,7 +34,7 @@ namespace MyLibraryEF.Forms
 
             BindingSource bi = new BindingSource();
 
-            var query = libContext.Books.Where(book => book.UserId == userId)
+            var query = libContext.Books.Where(book => book.UserId==userId && book.ToBuy=="Nie")
                 .Select(book => new { book.Id, book.Title, book.Author }).ToList();
 
             bi.DataSource = query;
@@ -72,9 +72,12 @@ namespace MyLibraryEF.Forms
         {
             try
             {
-                var book = libContext.Books.Find(currentId);
-                libContext.Books.Remove(book);
-                libContext.SaveChanges();
+                if (currentId != 0)
+                {
+                    var book = libContext.Books.Find(currentId);
+                    libContext.Books.Remove(book);
+                    libContext.SaveChanges();
+                }
 
                 currentId = 0;
                 titleText.Text = "";
