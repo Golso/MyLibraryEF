@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MyLibraryEF.Data;
+using MyLibraryEF.Models;
+using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
@@ -7,11 +9,14 @@ namespace MyLibraryEF.Forms
 {
     public partial class WantedForm : Form
     {
-        private int currentID = 0;
-        private readonly int userID;
-        public WantedForm(int userID)
+        private int currentId = 0;
+        private readonly int userId;
+        private readonly LibraryContext libContext;
+
+        public WantedForm(int userId)
         {
-            this.userID = userID;
+            this.userId = userId;
+            libContext = new LibraryContext();
 
             InitializeComponent();
 
@@ -32,32 +37,34 @@ namespace MyLibraryEF.Forms
         {
             if (titleText.Text != "" && autorText.Text != "")
             {
-                /*
-                BookModel book = new BookModel
+                Book book = new Book
                 {
-                    Tytuł = titleText.Text,
-                    Autor = autorText.Text,
-                    DoKupienia = "Tak",
-                    UserID = userID
+                    Title = titleText.Text,
+                    Author = autorText.Text,
+                    ToBuy = "Tak",
+                    UserId = userId
                 };
 
-                SqlDataAccess.SaveBook(book);
+                libContext.Books.Add(book);
+                libContext.SaveChanges();
 
                 titleText.Text = "";
                 autorText.Text = "";
-                */
             }
 
             LoadBooksList();
         }
 
+
+
+
         private void BtnBought_Click(object sender, EventArgs e)
         {
-            if (titleText.Text != "" && currentID != 0)
+            if (titleText.Text != "" && currentId != 0)
             {
                 //SqlDataAccess.BuyBook(currentID);
 
-                currentID = 0;
+                currentId = 0;
                 titleText.Text = "";
                 autorText.Text = "";
             }
@@ -67,11 +74,11 @@ namespace MyLibraryEF.Forms
 
         private void BtnUpdateBook_Click(object sender, EventArgs e)
         {
-            if (titleText.Text != "" && currentID != 0)
+            if (titleText.Text != "" && currentId != 0)
             {
                 //SqlDataAccess.UpdateBook(currentID, titleText.Text, autorText.Text);
 
-                currentID = 0;
+                currentId = 0;
                 titleText.Text = "";
                 autorText.Text = "";
             }
@@ -85,7 +92,7 @@ namespace MyLibraryEF.Forms
             {
                 //SqlDataAccess.DeleteBook(currentID);
 
-                currentID = 0;
+                currentId = 0;
                 titleText.Text = "";
                 autorText.Text = "";
             }
@@ -103,7 +110,7 @@ namespace MyLibraryEF.Forms
             {
                 DataGridViewRow row = dataGridViewMain.Rows[e.RowIndex];
 
-                currentID = Convert.ToInt32(row.Cells[0].Value);
+                currentId = Convert.ToInt32(row.Cells[0].Value);
                 titleText.Text = row.Cells[1].Value.ToString();
                 autorText.Text = row.Cells[2].Value.ToString();
             }

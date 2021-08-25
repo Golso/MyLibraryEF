@@ -1,4 +1,5 @@
-﻿using MyLibraryEF.Models;
+﻿using MyLibraryEF.Data;
+using MyLibraryEF.Models;
 using System;
 using System.Windows.Forms;
 
@@ -6,24 +7,29 @@ namespace MyLibraryEF.Forms
 {
     public partial class WhoBorrowsForm : Form
     {
-        private readonly BorrowedBook book;
-        private readonly int currentID;
+        private readonly BorrowedBook bookBorrowed;
+        private readonly int currentId;
         private readonly MyBooksForm form;
+        private readonly LibraryContext libContext;
 
-        public WhoBorrowsForm(BorrowedBook book, int currentID, MyBooksForm form)
+        public WhoBorrowsForm(BorrowedBook bookBorrowed, int currentId, MyBooksForm form)
         {
-            this.book = book;
-            this.currentID = currentID;
+            this.bookBorrowed = bookBorrowed;
+            this.currentId = currentId;
             this.form = form;
+            libContext = new LibraryContext();
 
             InitializeComponent();
         }
 
         private void BtnOK_Click(object sender, EventArgs e)
         {
-            //book.Komu = txtBoxWho.Text;
-            //SqlDataAccess.SaveBorrowedBook(book);
-            //SqlDataAccess.DeleteBook(currentID);
+            bookBorrowed.ToWhom = txtBoxWho.Text;
+            
+            libContext.BorrowedBooks.Add(bookBorrowed);
+            var book = libContext.Books.Find(currentId);
+            libContext.Books.Remove(book);
+            libContext.SaveChanges();
 
             form.LoadBooksList();
 

@@ -48,7 +48,7 @@ namespace MyLibraryEF.Forms
                     
                     user.Password = txtPassword.Text;
                     user.State = 0;
-                    //SqlDataAccess.AddUser(user);
+                    
                     libContext.Users.Add(user);
                     libContext.SaveChanges();
 

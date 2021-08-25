@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\ILibraryRepo.cs" />
     <Compile Include="Data\LibraryContext.cs" />
+    <Compile Include="Data\SqlLibraryRepo.cs" />
     <Compile Include="Forms\BorrowedForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using MyLibraryEF.Forms;
+using MyLibraryEF.Data;
 
 namespace MyLibraryEF
 {
@@ -20,21 +21,28 @@ namespace MyLibraryEF
               int nHeightEllipse
           );
 
-        private readonly int userID;
+        private readonly LibraryContext libContext;
+        private readonly SqlLibraryRepo libCommands;
+
+        private readonly int userId;
         private readonly int userState;
 
-        public MainForm(int userID)
+        public MainForm(int userId)
         {
-            this.userID = userID;
-            //userState = SqlDataAccess.GetUserState(userID);
+            libContext = new LibraryContext();
+            libCommands = new SqlLibraryRepo(libContext);
+
+            this.userId = userId;
+            userState = libCommands.GetUserState(userId);
+            
             InitializeComponent();
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
 
             pnlFormLoader.Controls.Clear();
-            MyBooksForm myBookForm = new MyBooksForm(userID) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            MyBooksForm myBookForm = new MyBooksForm(userId) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             myBookForm.FormBorderStyle = FormBorderStyle.None;
             pnlFormLoader.Controls.Add(myBookForm);
-            //userNameLabel.Text = SqlDataAccess.GetUserName(this.userID);
+            userNameLabel.Text = libCommands.GetUserName(this.userId);
             myBookForm.Show();
 
             ChangeMode(userState);
@@ -44,7 +52,7 @@ namespace MyLibraryEF
         {
             lblTitle.Text = "Moje książki";
             pnlFormLoader.Controls.Clear();
-            MyBooksForm myBookForm = new MyBooksForm(userID) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            MyBooksForm myBookForm = new MyBooksForm(userId) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             myBookForm.FormBorderStyle = FormBorderStyle.None;
             pnlFormLoader.Controls.Add(myBookForm);
             myBookForm.Show();
@@ -54,7 +62,7 @@ namespace MyLibraryEF
         {
             lblTitle.Text = "Pożyczone";
             pnlFormLoader.Controls.Clear();
-            BorrowedForm borrowedForm = new BorrowedForm(userID) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            BorrowedForm borrowedForm = new BorrowedForm(userId) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             borrowedForm.FormBorderStyle = FormBorderStyle.None;
             pnlFormLoader.Controls.Add(borrowedForm);
             borrowedForm.Show();
@@ -64,7 +72,7 @@ namespace MyLibraryEF
         {
             lblTitle.Text = "Do kupienia";
             pnlFormLoader.Controls.Clear();
-            WantedForm wantedForm = new WantedForm(userID) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            WantedForm wantedForm = new WantedForm(userId) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             wantedForm.FormBorderStyle = FormBorderStyle.None;
             pnlFormLoader.Controls.Add(wantedForm);
             wantedForm.Show();
@@ -74,7 +82,7 @@ namespace MyLibraryEF
         {
             lblTitle.Text = "Ustawienia";
             pnlFormLoader.Controls.Clear();
-            SettingsForm settingsForm = new SettingsForm(userID, this) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            SettingsForm settingsForm = new SettingsForm(userId, this) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             settingsForm.FormBorderStyle = FormBorderStyle.None;
             pnlFormLoader.Controls.Add(settingsForm);
             settingsForm.Show();

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MyLibraryEF.Data;
+using MyLibraryEF.Models;
+using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
@@ -7,14 +9,17 @@ namespace MyLibraryEF.Forms
 {
     public partial class BorrowedForm : Form
     {
-        private int currentID = 0;
-        private readonly int userID;
+        private int currentId = 0;
+        private readonly int userId;
+        private readonly LibraryContext libContext;
 
-        public BorrowedForm(int userID)
+        public BorrowedForm(int userId)
         {
-            this.userID = userID;
+            this.userId = userId;
 
             InitializeComponent();
+
+            libContext = new LibraryContext();
 
             //SetMode(SqlDataAccess.GetUserState(userID));
 
@@ -31,25 +36,27 @@ namespace MyLibraryEF.Forms
 
         private void BtnReturn_Click(object sender, EventArgs e)
         {
-            /*
-            BookModel book = new BookModel
+            Book book = new Book
             {
-                Tytuł = titleText.Text,
-                Autor = autorText.Text,
-                DoKupienia = "Nie",
-                UserID = userID
+                Title = titleText.Text,
+                Author = autorText.Text,
+                ToBuy = "Nie",
+                UserId = userId
             };
 
-            SqlDataAccess.SaveBook(book);
-            SqlDataAccess.DeleteBorrowedBook(currentID);
+            //SqlDataAccess.SaveBook(book);
+            libContext.Books.Add(book);
+            //SqlDataAccess.DeleteBorrowedBook(currentId);
 
-            currentID = 0;
+
+            libContext.SaveChanges();
+
+            currentId = 0;
             titleText.Text = "";
             autorText.Text = "";
             whoText.Text = "";
 
             LoadBorrowed();
-            */
         }
 
         private void DataGridViewBorrowed_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -58,7 +65,7 @@ namespace MyLibraryEF.Forms
             {
                 DataGridViewRow row = dataGridViewBorrowed.Rows[e.RowIndex];
 
-                currentID = Convert.ToInt32(row.Cells[0].Value);
+                currentId = Convert.ToInt32(row.Cells[0].Value);
                 titleText.Text = row.Cells[1].Value.ToString();
                 autorText.Text = row.Cells[2].Value.ToString();
                 whoText.Text = row.Cells[3].Value.ToString();
