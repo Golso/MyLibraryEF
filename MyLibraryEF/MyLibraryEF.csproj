@@ -101,6 +101,10 @@
     <Compile Include="Migrations\202108222320046_AddModelsToDB.designer.cs">
       <DependentUpon>202108222320046_AddModelsToDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108270931285_addBorrowedDate.cs" />
+    <Compile Include="Migrations\202108270931285_addBorrowedDate.designer.cs">
+      <DependentUpon>202108270931285_addBorrowedDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BorrowedBook.cs" />
@@ -133,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108222320046_AddModelsToDB.resx">
       <DependentUpon>202108222320046_AddModelsToDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108270931285_addBorrowedDate.resx">
+      <DependentUpon>202108270931285_addBorrowedDate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

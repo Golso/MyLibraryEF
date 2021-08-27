@@ -38,7 +38,7 @@ namespace MyLibraryEF.Data
         public int GetUserState(int userId)
         {
             int result = _libContext.Users.Where(user => user.UserId==userId)
-                .Select(x => x.UserId).FirstOrDefault();
+                .Select(x => x.State).FirstOrDefault();
 
             return result;
         }

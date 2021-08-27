@@ -34,7 +34,7 @@ namespace MyLibraryEF.Forms
             BindingSource bi = new BindingSource();
 
             var query = libContext.BorrowedBooks.Where(book => book.UserId == userId)
-                .Select(book => new { book.Id, book.Title, book.Author, book.ToWhom }).ToList();
+                .Select(book => new { book.Id, book.Title, book.Author, book.ToWhom, book.BorrowedTime }).ToList();
 
             bi.DataSource = query;
 

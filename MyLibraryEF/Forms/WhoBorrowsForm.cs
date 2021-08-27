@@ -27,6 +27,7 @@ namespace MyLibraryEF.Forms
             if (txtBoxWho.Text != string.Empty)
             {
                 bookBorrowed.ToWhom = txtBoxWho.Text;
+                bookBorrowed.BorrowedTime = borrowedDatePicker.Value;
 
                 libContext.BorrowedBooks.Add(bookBorrowed);
                 var book = libContext.Books.Find(currentId);
