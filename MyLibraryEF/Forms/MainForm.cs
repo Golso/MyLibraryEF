@@ -104,6 +104,7 @@ namespace MyLibraryEF
             BackColor = Color.Navy;
             pnlNavigation.BackColor = Color.Navy;
             userPanel.BackColor = Color.MidnightBlue;
+            pnlFormLoader.BackColor = Color.MediumBlue;
 
             lblTitle.ForeColor = Color.Black;
             userNameLabel.ForeColor = Color.Black;
@@ -124,6 +125,7 @@ namespace MyLibraryEF
             BackColor = Color.FromArgb(51, 51, 76);
             pnlNavigation.BackColor = Color.FromArgb(51, 51, 76);
             userPanel.BackColor = Color.FromArgb(39, 39, 58);
+            pnlFormLoader.BackColor = Color.FromArgb(100, 100, 100);
 
             lblTitle.ForeColor = Color.Black;
             userNameLabel.ForeColor = Color.Black;

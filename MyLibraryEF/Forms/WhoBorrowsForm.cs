@@ -37,6 +37,9 @@ namespace MyLibraryEF.Forms
                 form.LoadBooksList();
 
                 Hide();
+
+                //Not sure if its closing by itself
+                //libContext.Dispose();
             }
             else
             {
