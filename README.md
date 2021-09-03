@@ -14,6 +14,8 @@ In application we can:
 * lend books with note of date and to whom
 * make to buy lists
 * 2 color modes to choose
+
+![LibraryAnimation](https://user-images.githubusercontent.com/36167926/132017688-da3b05fa-f574-4243-bcf8-b9c78544254f.gif)
 # Technologies
 * C#
 * WinForms
