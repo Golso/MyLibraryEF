@@ -7,15 +7,13 @@ namespace MyLibraryEF.Forms
 {
     public partial class LoginForm : Form
     {
-        private readonly LibraryContext libContext;
-        private readonly SqlLibraryRepo libCommands;
+        private readonly ILibraryService libCommands;
 
         public LoginForm()
         {
             InitializeComponent();
 
-            libContext = new LibraryContext();
-            libCommands = new SqlLibraryRepo(libContext);
+            libCommands = new SqlLibraryService(new LibraryContext());
         }
         
         private void BtnClose_Click(object sender, EventArgs e)

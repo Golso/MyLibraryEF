@@ -12,8 +12,7 @@ namespace MyLibraryEF.Forms
     {
         private int currentId = 0;
         private readonly int userId;
-        private readonly LibraryContext libContext;
-        private readonly SqlLibraryRepo libCommand;
+        private readonly ILibraryService libCommand;
 
         public BorrowedForm(int userId)
         {
@@ -21,8 +20,7 @@ namespace MyLibraryEF.Forms
 
             InitializeComponent();
 
-            libContext = new LibraryContext();
-            libCommand = new SqlLibraryRepo(libContext);
+            libCommand = new SqlLibraryService(new LibraryContext());
 
             SetMode(libCommand.GetUserState(userId));
 
@@ -31,12 +29,7 @@ namespace MyLibraryEF.Forms
 
         private void LoadBorrowed()
         {
-            BindingSource bi = new BindingSource();
-
-            var query = libContext.BorrowedBooks.Where(book => book.UserId == userId)
-                .Select(book => new { book.Id, book.Title, book.Author, book.ToWhom, book.BorrowedTime }).ToList();
-
-            bi.DataSource = query;
+            BindingSource bi = libCommand.BorowedBooksToBindingSource(userId);
 
             dataGridViewBorrowed.DataSource = null;
             dataGridViewBorrowed.DataSource = bi;
@@ -52,10 +45,9 @@ namespace MyLibraryEF.Forms
                 UserId = userId
             };
 
-            libContext.Books.Add(book);
-            BorrowedBook returnedBook = libContext.BorrowedBooks.Find(currentId);
-            libContext.BorrowedBooks.Remove(returnedBook);
-            libContext.SaveChanges();
+            libCommand.AddBook(book);
+            libCommand.RemoveBorrowedBook(currentId);
+            libCommand.SaveChanges();
 
             currentId = 0;
             titleText.Text = "";

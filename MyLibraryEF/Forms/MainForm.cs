@@ -21,16 +21,14 @@ namespace MyLibraryEF
               int nHeightEllipse
           );
 
-        private readonly LibraryContext libContext;
-        private readonly SqlLibraryRepo libCommands;
+        private readonly ILibraryService libCommands;
 
         private readonly int userId;
         private readonly int userState;
 
         public MainForm(int userId)
         {
-            libContext = new LibraryContext();
-            libCommands = new SqlLibraryRepo(libContext);
+            libCommands = new SqlLibraryService(new LibraryContext());
 
             this.userId = userId;
             userState = libCommands.GetUserState(userId);

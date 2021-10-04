@@ -7,12 +7,12 @@ namespace MyLibraryEF.Forms
 {
     public partial class RegisterForm : Form
     {
-        private readonly LibraryContext libContext;
+        private readonly ILibraryService libCommand;
         public RegisterForm()
         {
             InitializeComponent();
 
-            libContext = new LibraryContext();
+            libCommand = new SqlLibraryService(new LibraryContext());
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
@@ -48,9 +48,9 @@ namespace MyLibraryEF.Forms
                     
                     user.Password = txtPassword.Text;
                     user.State = 0;
-                    
-                    libContext.Users.Add(user);
-                    libContext.SaveChanges();
+
+                    libCommand.AddUser(user);
+                    libCommand.SaveChanges();
 
                     txtUsername.Text = "";
                     txtPassword.Text = "";

@@ -12,14 +12,12 @@ namespace MyLibraryEF.Forms
     {
         private int currentId = 0;
         private readonly int userId;
-        private readonly LibraryContext libContext;
-        private readonly SqlLibraryRepo libCommand;
+        private readonly ILibraryService libCommand;
 
         public WantedForm(int userId)
         {
             this.userId = userId;
-            libContext = new LibraryContext();
-            libCommand = new SqlLibraryRepo(libContext);
+            libCommand = new SqlLibraryService(new LibraryContext());
 
             InitializeComponent();
 
@@ -30,12 +28,7 @@ namespace MyLibraryEF.Forms
 
         private void LoadBooksList()
         {
-            BindingSource bi = new BindingSource();
-
-            var query = libContext.Books.Where(book => book.UserId==userId && book.ToBuy=="Tak")
-                .Select(book => new { book.Id, book.Title, book.Author }).ToList();
-
-            bi.DataSource = query;
+            BindingSource bi = libCommand.BooksToBindingSource(userId, "Tak");
 
             dataGridViewMain.DataSource = null;
             dataGridViewMain.DataSource = bi;
@@ -53,8 +46,8 @@ namespace MyLibraryEF.Forms
                     UserId = userId
                 };
 
-                libContext.Books.Add(book);
-                libContext.SaveChanges();
+                libCommand.AddBook(book);
+                libCommand.SaveChanges();
 
                 titleText.Text = "";
                 autorText.Text = "";
@@ -67,9 +60,8 @@ namespace MyLibraryEF.Forms
         {
             if (titleText.Text != "" && currentId != 0)
             {
-                Book book = libContext.Books.Find(currentId);
-                book.ToBuy = "Nie";
-                libContext.SaveChanges();
+                libCommand.UpdateToBuy(currentId);
+                libCommand.SaveChanges();
 
                 currentId = 0;
                 titleText.Text = "";
@@ -83,10 +75,8 @@ namespace MyLibraryEF.Forms
         {
             if (titleText.Text != "" && currentId != 0)
             {
-                Book book = libContext.Books.Find(currentId);
-                book.Title = titleText.Text;
-                book.Author = autorText.Text;
-                libContext.SaveChanges();
+                libCommand.UpdateBook(currentId, titleText.Text, autorText.Text);
+                libCommand.SaveChanges();
 
                 currentId = 0;
                 titleText.Text = "";
@@ -102,9 +92,8 @@ namespace MyLibraryEF.Forms
             {
                 if (currentId != 0)
                 {
-                    Book book = libContext.Books.Find(currentId);
-                    libContext.Books.Remove(book);
-                    libContext.SaveChanges();
+                    libCommand.RemoveBook(currentId);
+                    libCommand.SaveChanges();
                 }
 
                 currentId = 0;

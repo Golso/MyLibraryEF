@@ -12,14 +12,12 @@ namespace MyLibraryEF.Forms
     {
         private int currentId = 0;
         private readonly int userId;
-        private readonly LibraryContext libContext;
-        private readonly SqlLibraryRepo libCommands;
+        private readonly ILibraryService libCommands;
 
         public MyBooksForm(int userId)
         {
             this.userId = userId;
-            libContext = new LibraryContext();
-            libCommands = new SqlLibraryRepo(libContext);
+            libCommands = new SqlLibraryService(new LibraryContext());
 
             InitializeComponent();
 
@@ -32,12 +30,7 @@ namespace MyLibraryEF.Forms
         {
             txtBoxTitleSearch.Text = "Szukaj po tytule...";
 
-            BindingSource bi = new BindingSource();
-
-            var query = libContext.Books.Where(book => book.UserId==userId && book.ToBuy=="Nie")
-                .Select(book => new { book.Id, book.Title, book.Author }).ToList();
-
-            bi.DataSource = query;
+            BindingSource bi = libCommands.BooksToBindingSource(userId, "Nie");
             
             dataGridViewMain.DataSource = null;
             dataGridViewMain.DataSource = bi;
@@ -58,8 +51,8 @@ namespace MyLibraryEF.Forms
                     UserId = userId
                 };
 
-                libContext.Books.Add(book);
-                libContext.SaveChanges();
+                libCommands.AddBook(book);
+                libCommands.SaveChanges();
 
                 titleText.Text = "";
                 autorText.Text = "";
@@ -74,9 +67,8 @@ namespace MyLibraryEF.Forms
             {
                 if (currentId != 0)
                 {
-                    var book = libContext.Books.Find(currentId);
-                    libContext.Books.Remove(book);
-                    libContext.SaveChanges();
+                    libCommands.RemoveBook(currentId);
+                    libCommands.SaveChanges();
                 }
 
                 currentId = 0;
@@ -107,10 +99,8 @@ namespace MyLibraryEF.Forms
         {
             if (titleText.Text != "" && currentId != 0)
             {
-                var book = libContext.Books.Find(currentId);
-                book.Title = titleText.Text;
-                book.Author = autorText.Text;
-                libContext.SaveChanges();
+                libCommands.UpdateBook(currentId, titleText.Text, autorText.Text);
+                libCommands.SaveChanges();
 
                 currentId = 0;
                 titleText.Text = "";
@@ -143,13 +133,7 @@ namespace MyLibraryEF.Forms
 
         private void TxtBoxTitleSearch_TextChanged(object sender, EventArgs e)
         {
-            BindingSource bi = new BindingSource();
-
-            var query = libContext.Books
-                .Where(book => book.UserId == userId && book.Title.Contains(txtBoxTitleSearch.Text))
-                .Select(book => new { book.Id, book.Title, book.Author }).ToList();
-
-            bi.DataSource = query;
+            BindingSource bi = libCommands.BindingSourceForSearch(userId, txtBoxTitleSearch.Text);
 
             dataGridViewMain.DataSource = null;
             dataGridViewMain.DataSource = bi;
