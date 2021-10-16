@@ -1,9 +1,7 @@
 ﻿using MyLibraryEF.Data;
 using MyLibraryEF.Models;
 using System;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace MyLibraryEF.Forms
@@ -85,7 +83,7 @@ namespace MyLibraryEF.Forms
 
             LoadBooksList();
         }
-    
+
         private void BtnDelete_Click(object sender, EventArgs e)
         {
             try

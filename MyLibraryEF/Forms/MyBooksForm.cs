@@ -1,9 +1,7 @@
 ﻿using MyLibraryEF.Data;
 using MyLibraryEF.Models;
 using System;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace MyLibraryEF.Forms
@@ -31,7 +29,7 @@ namespace MyLibraryEF.Forms
             txtBoxTitleSearch.Text = "Szukaj po tytule...";
 
             BindingSource bi = libCommands.BooksToBindingSource(userId, "Nie");
-            
+
             dataGridViewMain.DataSource = null;
             dataGridViewMain.DataSource = bi;
 

@@ -1,6 +1,5 @@
 ﻿using MyLibraryEF.Data;
 using System;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace MyLibraryEF.Forms
@@ -15,7 +14,7 @@ namespace MyLibraryEF.Forms
 
             libCommands = new SqlLibraryService(new LibraryContext());
         }
-        
+
         private void BtnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -25,8 +24,8 @@ namespace MyLibraryEF.Forms
         {
             string userName = txtUsername.Text;
             string password = txtPassword.Text;
-            
-            if(libCommands.LoginPasswordExists(userName, password))
+
+            if (libCommands.LoginPasswordExists(userName, password))
             {
                 int userID = libCommands.GetUserId(userName, password);
                 new MainForm(userID).Show();
@@ -36,7 +35,7 @@ namespace MyLibraryEF.Forms
             {
                 MessageBox.Show("Błędny login lub hasło.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
+
         }
 
         private void BtnClear_Click(object sender, EventArgs e)

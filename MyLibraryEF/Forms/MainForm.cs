@@ -1,9 +1,9 @@
-﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
-using System.Runtime.InteropServices;
+﻿using MyLibraryEF.Data;
 using MyLibraryEF.Forms;
-using MyLibraryEF.Data;
+using System;
+using System.Drawing;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace MyLibraryEF
 {
@@ -32,7 +32,7 @@ namespace MyLibraryEF
 
             this.userId = userId;
             userState = libCommands.GetUserState(userId);
-            
+
             InitializeComponent();
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
 

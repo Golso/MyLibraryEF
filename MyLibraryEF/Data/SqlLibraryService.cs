@@ -1,5 +1,4 @@
 ﻿using MyLibraryEF.Models;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -8,10 +7,12 @@ namespace MyLibraryEF.Data
     class SqlLibraryService : ILibraryService
     {
         private readonly LibraryContext _libContext;
+        private readonly Encryption encryption;
 
         public SqlLibraryService(LibraryContext libraryContext)
         {
             _libContext = libraryContext;
+            encryption = new Encryption();
         }
 
         public void AddBook(Book book)
@@ -26,6 +27,9 @@ namespace MyLibraryEF.Data
 
         public void AddUser(User user)
         {
+            var hashedPassword = encryption.HashPassword(user.Password);
+            user.Password = hashedPassword;
+
             _libContext.Users.Add(user);
         }
 
@@ -74,15 +78,16 @@ namespace MyLibraryEF.Data
 
         public int GetAmountOfBooks(int userID)
         {
-            int resultBooks = _libContext.Books.Where(book => book.UserId==userID && book.ToBuy=="Nie").Count();
-            int resultBorrowed = _libContext.BorrowedBooks.Where(book => book.UserId==userID).Count();
+            int resultBooks = _libContext.Books.Where(book => book.UserId == userID && book.ToBuy == "Nie").Count();
+            int resultBorrowed = _libContext.BorrowedBooks.Where(book => book.UserId == userID).Count();
 
             return resultBooks + resultBorrowed;
         }
 
         public int GetUserId(string userName, string password)
         {
-            int result = _libContext.Users.Where(user => (user.Login.Contains(userName) && user.Password.Contains(password)))
+            var hashedPassword = encryption.HashPassword(password);
+            int result = _libContext.Users.Where(user => (user.Login.Contains(userName) && user.Password.Contains(hashedPassword)))
                 .Select(x => x.UserId).FirstOrDefault();
 
             return result;
@@ -98,7 +103,7 @@ namespace MyLibraryEF.Data
 
         public int GetUserState(int userId)
         {
-            int result = _libContext.Users.Where(user => user.UserId==userId)
+            int result = _libContext.Users.Where(user => user.UserId == userId)
                 .Select(x => x.State).FirstOrDefault();
 
             return result;
@@ -106,7 +111,8 @@ namespace MyLibraryEF.Data
 
         public bool LoginPasswordExists(string userName, string password)
         {
-            var sth = _libContext.Users.Where(user => (user.Login==userName && user.Password==password)).Count();
+            var hashedPassword = encryption.HashPassword(password);
+            var sth = _libContext.Users.Where(user => (user.Login == userName && user.Password == hashedPassword)).Count();
             if (sth == 0)
                 return false;
             return true;

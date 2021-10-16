@@ -45,7 +45,7 @@ namespace MyLibraryEF.Forms
 
                 try
                 {
-                    
+
                     user.Password = txtPassword.Text;
                     user.State = 0;
 
@@ -59,7 +59,7 @@ namespace MyLibraryEF.Forms
 
                     new LoginForm().Show();
                     Hide();
-                    
+
                 }
                 catch (Exception)
                 {
@@ -73,7 +73,7 @@ namespace MyLibraryEF.Forms
             }
             else
             {
-                MessageBox.Show("Hasła do siebie nie pasują.","Błąd",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("Hasła do siebie nie pasują.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
