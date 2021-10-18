@@ -9,7 +9,7 @@ namespace MyLibraryEF.Forms
     {
         private readonly int userId;
         private readonly MainForm main;
-        private readonly ILibraryService libCommand;
+        private readonly UnitOfWork _unitOfWork;
         public SettingsForm(int userId, MainForm main)
         {
             this.userId = userId;
@@ -17,9 +17,9 @@ namespace MyLibraryEF.Forms
 
             InitializeComponent();
 
-            libCommand = new SqlLibraryService(new LibraryContext());
+            _unitOfWork = new UnitOfWork(new LibraryContext());
 
-            SetMode(libCommand.GetUserState(this.userId));
+            SetMode(_unitOfWork.UserRepository.GetUserState(this.userId));
         }
 
         private void BtnDeleteAccount_Click(object sender, EventArgs e)
@@ -27,8 +27,8 @@ namespace MyLibraryEF.Forms
             DialogResult delete = MessageBox.Show("Czy na pewno chcesz usunąć konto?", "Na pewno?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (delete == DialogResult.Yes)
             {
-                libCommand.RemoveUser(userId);
-                libCommand.SaveChanges();
+                _unitOfWork.UserRepository.RemoveUser(userId);
+                _unitOfWork.Save();
 
                 new LoginForm().Show();
                 main.Hide();
@@ -37,8 +37,8 @@ namespace MyLibraryEF.Forms
 
         private void BtnNormalMode_Click(object sender, EventArgs e)
         {
-            libCommand.ChangeStateOfUser(userId, 0);
-            libCommand.SaveChanges();
+            _unitOfWork.UserRepository.ChangeStateOfUser(userId, 0);
+            _unitOfWork.Save();
 
             main.ChangeMode(0);
             SetMode(0);
@@ -46,8 +46,8 @@ namespace MyLibraryEF.Forms
 
         private void BtnBlackMode_Click(object sender, EventArgs e)
         {
-            libCommand.ChangeStateOfUser(userId, 1);
-            libCommand.SaveChanges();
+            _unitOfWork.UserRepository.ChangeStateOfUser(userId, 1);
+            _unitOfWork.Save();
 
             main.ChangeMode(1);
             SetMode(1);

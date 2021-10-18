@@ -10,7 +10,7 @@ namespace MyLibraryEF.Forms
     {
         private int currentId = 0;
         private readonly int userId;
-        private readonly ILibraryService libCommand;
+        private readonly UnitOfWork _unitOfWork;
 
         public BorrowedForm(int userId)
         {
@@ -18,16 +18,16 @@ namespace MyLibraryEF.Forms
 
             InitializeComponent();
 
-            libCommand = new SqlLibraryService(new LibraryContext());
+            _unitOfWork = new UnitOfWork(new LibraryContext());
 
-            SetMode(libCommand.GetUserState(userId));
+            SetMode(_unitOfWork.UserRepository.GetUserState(userId));
 
             LoadBorrowed();
         }
 
         private void LoadBorrowed()
         {
-            BindingSource bi = libCommand.BorowedBooksToBindingSource(userId);
+            BindingSource bi = _unitOfWork.BorrowedBookRepository.BorowedBooksToBindingSource(userId);
 
             dataGridViewBorrowed.DataSource = null;
             dataGridViewBorrowed.DataSource = bi;
@@ -43,9 +43,9 @@ namespace MyLibraryEF.Forms
                 UserId = userId
             };
 
-            libCommand.AddBook(book);
-            libCommand.RemoveBorrowedBook(currentId);
-            libCommand.SaveChanges();
+            _unitOfWork.BookRepository.AddBook(book);
+            _unitOfWork.BorrowedBookRepository.RemoveBorrowedBook(currentId);
+            _unitOfWork.Save();
 
             currentId = 0;
             titleText.Text = "";

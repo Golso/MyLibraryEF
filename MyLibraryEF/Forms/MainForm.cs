@@ -21,17 +21,17 @@ namespace MyLibraryEF
               int nHeightEllipse
           );
 
-        private readonly ILibraryService libCommands;
+        private readonly UnitOfWork _unitOfWork;
 
         private readonly int userId;
         private readonly int userState;
 
         public MainForm(int userId)
         {
-            libCommands = new SqlLibraryService(new LibraryContext());
+            _unitOfWork = new UnitOfWork(new LibraryContext());
 
             this.userId = userId;
-            userState = libCommands.GetUserState(userId);
+            userState = _unitOfWork.UserRepository.GetUserState(userId);
 
             InitializeComponent();
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
@@ -40,7 +40,7 @@ namespace MyLibraryEF
             MyBooksForm myBookForm = new MyBooksForm(userId) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             myBookForm.FormBorderStyle = FormBorderStyle.None;
             pnlFormLoader.Controls.Add(myBookForm);
-            userNameLabel.Text = libCommands.GetUserName(this.userId);
+            userNameLabel.Text = _unitOfWork.UserRepository.GetUserName(this.userId);
             myBookForm.Show();
 
             ChangeMode(userState);

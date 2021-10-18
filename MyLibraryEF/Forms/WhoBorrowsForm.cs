@@ -10,14 +10,14 @@ namespace MyLibraryEF.Forms
         private readonly BorrowedBook bookBorrowed;
         private readonly int currentId;
         private readonly MyBooksForm form;
-        private readonly ILibraryService libCommand;
+        private readonly UnitOfWork _unitOfWork;
 
         public WhoBorrowsForm(BorrowedBook bookBorrowed, int currentId, MyBooksForm form)
         {
             this.bookBorrowed = bookBorrowed;
             this.currentId = currentId;
             this.form = form;
-            libCommand = new SqlLibraryService(new LibraryContext());
+            _unitOfWork = new UnitOfWork(new LibraryContext());
 
             InitializeComponent();
         }
@@ -29,9 +29,9 @@ namespace MyLibraryEF.Forms
                 bookBorrowed.ToWhom = txtBoxWho.Text;
                 bookBorrowed.BorrowedTime = borrowedDatePicker.Value;
 
-                libCommand.AddBorrowedBook(bookBorrowed);
-                libCommand.RemoveBook(currentId);
-                libCommand.SaveChanges();
+                _unitOfWork.BorrowedBookRepository.AddBorrowedBook(bookBorrowed);
+                _unitOfWork.BookRepository.RemoveBook(currentId);
+                _unitOfWork.Save();
 
                 form.LoadBooksList();
 

@@ -6,13 +6,13 @@ namespace MyLibraryEF.Forms
 {
     public partial class LoginForm : Form
     {
-        private readonly ILibraryService libCommands;
+        private readonly UnitOfWork _unitOfWork;
 
         public LoginForm()
         {
             InitializeComponent();
 
-            libCommands = new SqlLibraryService(new LibraryContext());
+            _unitOfWork = new UnitOfWork(new LibraryContext());
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
@@ -25,9 +25,9 @@ namespace MyLibraryEF.Forms
             string userName = txtUsername.Text;
             string password = txtPassword.Text;
 
-            if (libCommands.LoginPasswordExists(userName, password))
+            if (_unitOfWork.UserRepository.LoginPasswordExists(userName, password))
             {
-                int userID = libCommands.GetUserId(userName, password);
+                int userID = _unitOfWork.UserRepository.GetUserId(userName, password);
                 new MainForm(userID).Show();
                 Hide();
             }

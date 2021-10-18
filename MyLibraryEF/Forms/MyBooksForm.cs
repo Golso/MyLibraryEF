@@ -10,16 +10,16 @@ namespace MyLibraryEF.Forms
     {
         private int currentId = 0;
         private readonly int userId;
-        private readonly ILibraryService libCommands;
+        private readonly UnitOfWork _unitOfWork;
 
         public MyBooksForm(int userId)
         {
             this.userId = userId;
-            libCommands = new SqlLibraryService(new LibraryContext());
+            _unitOfWork = new UnitOfWork(new LibraryContext());
 
             InitializeComponent();
 
-            SetMode(libCommands.GetUserState(userId));
+            SetMode(_unitOfWork.UserRepository.GetUserState(userId));
 
             LoadBooksList();
         }
@@ -28,13 +28,14 @@ namespace MyLibraryEF.Forms
         {
             txtBoxTitleSearch.Text = "Szukaj po tytule...";
 
-            BindingSource bi = libCommands.BooksToBindingSource(userId, "Nie");
+            BindingSource bi = _unitOfWork.BookRepository.BooksToBindingSource(userId, "Nie");
 
             dataGridViewMain.DataSource = null;
             dataGridViewMain.DataSource = bi;
 
+            var amountOfBooks = _unitOfWork.BookRepository.GetAmountOfBooks(userId) + _unitOfWork.BorrowedBookRepository.GetAmountOfBorrowedBooks(userId);
 
-            lblBooksAmount.Text = "Ilość posiadanych książek: " + libCommands.GetAmountOfBooks(userId);
+            lblBooksAmount.Text = "Ilość posiadanych książek: " + amountOfBooks;
         }
 
         private void BtnAddBook_Click(object sender, EventArgs e)
@@ -49,8 +50,8 @@ namespace MyLibraryEF.Forms
                     UserId = userId
                 };
 
-                libCommands.AddBook(book);
-                libCommands.SaveChanges();
+                _unitOfWork.BookRepository.AddBook(book);
+                _unitOfWork.Save();
 
                 titleText.Text = "";
                 autorText.Text = "";
@@ -65,8 +66,8 @@ namespace MyLibraryEF.Forms
             {
                 if (currentId != 0)
                 {
-                    libCommands.RemoveBook(currentId);
-                    libCommands.SaveChanges();
+                    _unitOfWork.BookRepository.RemoveBook(currentId);
+                    _unitOfWork.Save();
                 }
 
                 currentId = 0;
@@ -97,8 +98,8 @@ namespace MyLibraryEF.Forms
         {
             if (titleText.Text != "" && currentId != 0)
             {
-                libCommands.UpdateBook(currentId, titleText.Text, autorText.Text);
-                libCommands.SaveChanges();
+                _unitOfWork.BookRepository.UpdateBook(currentId, titleText.Text, autorText.Text);
+                _unitOfWork.Save();
 
                 currentId = 0;
                 titleText.Text = "";
@@ -131,7 +132,7 @@ namespace MyLibraryEF.Forms
 
         private void TxtBoxTitleSearch_TextChanged(object sender, EventArgs e)
         {
-            BindingSource bi = libCommands.BindingSourceForSearch(userId, txtBoxTitleSearch.Text);
+            BindingSource bi = _unitOfWork.BookRepository.BindingSourceForSearchOfBooks(userId, txtBoxTitleSearch.Text);
 
             dataGridViewMain.DataSource = null;
             dataGridViewMain.DataSource = bi;

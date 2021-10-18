@@ -75,10 +75,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Repositories\BookRepository.cs" />
+    <Compile Include="Data\Repositories\BorrowedBookRepository.cs" />
     <Compile Include="Data\Encryption.cs" />
-    <Compile Include="Data\ILibraryService.cs" />
+    <Compile Include="Data\Interfaces\IBookRepo.cs" />
+    <Compile Include="Data\Interfaces\IBorrowedBookRepo.cs" />
+    <Compile Include="Data\Interfaces\IUserRepo.cs" />
     <Compile Include="Data\LibraryContext.cs" />
-    <Compile Include="Data\SqlLibraryService.cs" />
+    <Compile Include="Data\UnitOfWork.cs" />
+    <Compile Include="Data\Repositories\UserRepository.cs" />
     <Compile Include="Forms\BorrowedForm.cs">
       <SubType>Form</SubType>
     </Compile>

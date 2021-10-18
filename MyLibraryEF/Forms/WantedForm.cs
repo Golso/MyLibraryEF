@@ -10,23 +10,23 @@ namespace MyLibraryEF.Forms
     {
         private int currentId = 0;
         private readonly int userId;
-        private readonly ILibraryService libCommand;
+        private readonly UnitOfWork _unitOfWork;
 
         public WantedForm(int userId)
         {
             this.userId = userId;
-            libCommand = new SqlLibraryService(new LibraryContext());
+            _unitOfWork = new UnitOfWork(new LibraryContext());
 
             InitializeComponent();
 
-            SetMode(libCommand.GetUserState(userId));
+            SetMode(_unitOfWork.UserRepository.GetUserState(userId));
 
             LoadBooksList();
         }
 
         private void LoadBooksList()
         {
-            BindingSource bi = libCommand.BooksToBindingSource(userId, "Tak");
+            BindingSource bi = _unitOfWork.BookRepository.BooksToBindingSource(userId, "Tak");
 
             dataGridViewMain.DataSource = null;
             dataGridViewMain.DataSource = bi;
@@ -44,8 +44,8 @@ namespace MyLibraryEF.Forms
                     UserId = userId
                 };
 
-                libCommand.AddBook(book);
-                libCommand.SaveChanges();
+                _unitOfWork.BookRepository.AddBook(book);
+                _unitOfWork.Save();
 
                 titleText.Text = "";
                 autorText.Text = "";
@@ -58,8 +58,8 @@ namespace MyLibraryEF.Forms
         {
             if (titleText.Text != "" && currentId != 0)
             {
-                libCommand.UpdateToBuy(currentId);
-                libCommand.SaveChanges();
+                _unitOfWork.BookRepository.UpdateToBuyOfBook(currentId);
+                _unitOfWork.Save();
 
                 currentId = 0;
                 titleText.Text = "";
@@ -73,8 +73,8 @@ namespace MyLibraryEF.Forms
         {
             if (titleText.Text != "" && currentId != 0)
             {
-                libCommand.UpdateBook(currentId, titleText.Text, autorText.Text);
-                libCommand.SaveChanges();
+                _unitOfWork.BookRepository.UpdateBook(currentId, titleText.Text, autorText.Text);
+                _unitOfWork.Save();
 
                 currentId = 0;
                 titleText.Text = "";
@@ -90,8 +90,8 @@ namespace MyLibraryEF.Forms
             {
                 if (currentId != 0)
                 {
-                    libCommand.RemoveBook(currentId);
-                    libCommand.SaveChanges();
+                    _unitOfWork.BookRepository.RemoveBook(currentId);
+                    _unitOfWork.Save();
                 }
 
                 currentId = 0;
