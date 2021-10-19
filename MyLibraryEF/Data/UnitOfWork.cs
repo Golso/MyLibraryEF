@@ -2,7 +2,7 @@
 
 namespace MyLibraryEF.Data
 {
-    class UnitOfWork
+    public class UnitOfWork
     {
         private IUserRepo _userRepository;
         private IBookRepo _bookRepository;

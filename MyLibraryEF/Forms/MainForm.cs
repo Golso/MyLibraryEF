@@ -48,7 +48,7 @@ namespace MyLibraryEF
 
         private void BtnMain_Click(object sender, EventArgs e)
         {
-            lblTitle.Text = "Moje książki";
+            lblTitle.Text = "My books";
             pnlFormLoader.Controls.Clear();
             MyBooksForm myBookForm = new MyBooksForm(userId) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             myBookForm.FormBorderStyle = FormBorderStyle.None;
@@ -58,7 +58,7 @@ namespace MyLibraryEF
 
         private void BtnBorrowed_Click(object sender, EventArgs e)
         {
-            lblTitle.Text = "Pożyczone";
+            lblTitle.Text = "Borrowed books";
             pnlFormLoader.Controls.Clear();
             BorrowedForm borrowedForm = new BorrowedForm(userId) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             borrowedForm.FormBorderStyle = FormBorderStyle.None;
@@ -68,7 +68,7 @@ namespace MyLibraryEF
 
         private void BtnWanted_Click(object sender, EventArgs e)
         {
-            lblTitle.Text = "Do kupienia";
+            lblTitle.Text = "Books to buy";
             pnlFormLoader.Controls.Clear();
             WantedForm wantedForm = new WantedForm(userId) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             wantedForm.FormBorderStyle = FormBorderStyle.None;
@@ -78,7 +78,7 @@ namespace MyLibraryEF
 
         private void BtnSettings_Click(object sender, EventArgs e)
         {
-            lblTitle.Text = "Ustawienia";
+            lblTitle.Text = "Settings";
             pnlFormLoader.Controls.Clear();
             SettingsForm settingsForm = new SettingsForm(userId, this) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             settingsForm.FormBorderStyle = FormBorderStyle.None;

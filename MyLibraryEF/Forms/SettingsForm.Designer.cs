@@ -40,7 +40,7 @@ namespace MyLibraryEF.Forms
             this.btnDeleteAccount.Name = "btnDeleteAccount";
             this.btnDeleteAccount.Size = new System.Drawing.Size(429, 106);
             this.btnDeleteAccount.TabIndex = 0;
-            this.btnDeleteAccount.Text = "Usuń konto";
+            this.btnDeleteAccount.Text = "Delete an account";
             this.btnDeleteAccount.UseVisualStyleBackColor = true;
             this.btnDeleteAccount.Click += new System.EventHandler(this.BtnDeleteAccount_Click);
             // 
@@ -50,7 +50,7 @@ namespace MyLibraryEF.Forms
             this.btnNormalMode.Name = "btnNormalMode";
             this.btnNormalMode.Size = new System.Drawing.Size(196, 158);
             this.btnNormalMode.TabIndex = 1;
-            this.btnNormalMode.Text = "Normalny";
+            this.btnNormalMode.Text = "Blue color";
             this.btnNormalMode.UseVisualStyleBackColor = true;
             this.btnNormalMode.Click += new System.EventHandler(this.BtnNormalMode_Click);
             // 
@@ -60,7 +60,7 @@ namespace MyLibraryEF.Forms
             this.btnBlackMode.Name = "btnBlackMode";
             this.btnBlackMode.Size = new System.Drawing.Size(196, 158);
             this.btnBlackMode.TabIndex = 2;
-            this.btnBlackMode.Text = "Szary";
+            this.btnBlackMode.Text = "Grey color";
             this.btnBlackMode.UseVisualStyleBackColor = true;
             this.btnBlackMode.Click += new System.EventHandler(this.BtnBlackMode_Click);
             // 

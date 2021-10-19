@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLibraryEF", "MyLibraryEF\MyLibraryEF.csproj", "{D5299939-F482-40A4-A842-67D285D67216}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLibraryEFXUnitTests", "MyLibraryEFXUnitTests\MyLibraryEFXUnitTests.csproj", "{227C5D2A-FE1F-4797-819B-C95567D51BCB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D5299939-F482-40A4-A842-67D285D67216}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5299939-F482-40A4-A842-67D285D67216}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5299939-F482-40A4-A842-67D285D67216}.Release|Any CPU.Build.0 = Release|Any CPU
+		{227C5D2A-FE1F-4797-819B-C95567D51BCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{227C5D2A-FE1F-4797-819B-C95567D51BCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{227C5D2A-FE1F-4797-819B-C95567D51BCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{227C5D2A-FE1F-4797-819B-C95567D51BCB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

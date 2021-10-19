@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace MyLibraryEF.Data.Interfaces
 {
-    interface IBookRepo
+    public interface IBookRepo
     {
         int GetAmountOfBooks(int userId);
         void AddBook(Book book);

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace MyLibraryEF.Data
 {
-    class UserRepository : IUserRepo
+    public class UserRepository : IUserRepo
     {
         private readonly LibraryContext _libContext;
         private readonly Encryption _encryption;

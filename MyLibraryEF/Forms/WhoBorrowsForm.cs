@@ -42,7 +42,7 @@ namespace MyLibraryEF.Forms
             }
             else
             {
-                MessageBox.Show("Podanie nazwy pożyczającego jest wymagane.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Providing the name of the borrower is required.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
         }

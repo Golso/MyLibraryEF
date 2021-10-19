@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace MyLibraryEF.Data
 {
-    class BorrowedBookRepository : IBorrowedBookRepo
+    public class BorrowedBookRepository : IBorrowedBookRepo
     {
         private readonly LibraryContext _libContext;
 

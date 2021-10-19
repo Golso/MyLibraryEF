@@ -33,7 +33,7 @@ namespace MyLibraryEF.Forms
             }
             else
             {
-                MessageBox.Show("Błędny login lub hasło.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Incorrect login or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }

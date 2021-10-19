@@ -26,16 +26,16 @@ namespace MyLibraryEF.Forms
 
         public void LoadBooksList()
         {
-            txtBoxTitleSearch.Text = "Szukaj po tytule...";
+            txtBoxTitleSearch.Text = "Search by title...";
 
-            BindingSource bi = _unitOfWork.BookRepository.BooksToBindingSource(userId, "Nie");
+            BindingSource bi = _unitOfWork.BookRepository.BooksToBindingSource(userId, "No");
 
             dataGridViewMain.DataSource = null;
             dataGridViewMain.DataSource = bi;
 
             var amountOfBooks = _unitOfWork.BookRepository.GetAmountOfBooks(userId) + _unitOfWork.BorrowedBookRepository.GetAmountOfBorrowedBooks(userId);
 
-            lblBooksAmount.Text = "Ilość posiadanych książek: " + amountOfBooks;
+            lblBooksAmount.Text = "Number of books owned: " + amountOfBooks;
         }
 
         private void BtnAddBook_Click(object sender, EventArgs e)
@@ -46,7 +46,7 @@ namespace MyLibraryEF.Forms
                 {
                     Title = titleText.Text,
                     Author = autorText.Text,
-                    ToBuy = "Nie",
+                    ToBuy = "No",
                     UserId = userId
                 };
 

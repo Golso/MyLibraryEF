@@ -2,7 +2,7 @@
 
 namespace MyLibraryEF.Data.Interfaces
 {
-    interface IUserRepo
+    public interface IUserRepo
     {
         void AddUser(User user);
         void RemoveUser(int userId);

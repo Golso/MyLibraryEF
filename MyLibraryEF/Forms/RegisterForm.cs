@@ -73,7 +73,7 @@ namespace MyLibraryEF.Forms
             }
             else
             {
-                MessageBox.Show("Hasła do siebie nie pasują.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("The passwords do not match.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

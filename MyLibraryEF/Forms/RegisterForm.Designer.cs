@@ -92,9 +92,9 @@ namespace MyLibraryEF.Forms
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(24, 177);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 23);
+            this.label3.Size = new System.Drawing.Size(85, 23);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Hasło";
+            this.label3.Text = "Password";
             // 
             // txtConPassword
             // 
@@ -113,9 +113,9 @@ namespace MyLibraryEF.Forms
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(24, 234);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(121, 23);
+            this.label4.Size = new System.Drawing.Size(147, 23);
             this.label4.TabIndex = 5;
-            this.label4.Text = "Powtórz hasło";
+            this.label4.Text = "Repeat password";
             // 
             // checkBoxShowPass
             // 
@@ -123,11 +123,11 @@ namespace MyLibraryEF.Forms
             this.checkBoxShowPass.Cursor = System.Windows.Forms.Cursors.Hand;
             this.checkBoxShowPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkBoxShowPass.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxShowPass.Location = new System.Drawing.Point(122, 294);
+            this.checkBoxShowPass.Location = new System.Drawing.Point(93, 293);
             this.checkBoxShowPass.Name = "checkBoxShowPass";
-            this.checkBoxShowPass.Size = new System.Drawing.Size(120, 27);
+            this.checkBoxShowPass.Size = new System.Drawing.Size(153, 27);
             this.checkBoxShowPass.TabIndex = 7;
-            this.checkBoxShowPass.Text = "Pokaż hasło";
+            this.checkBoxShowPass.Text = "Show password";
             this.checkBoxShowPass.UseVisualStyleBackColor = true;
             this.checkBoxShowPass.CheckedChanged += new System.EventHandler(this.CheckBoxShowPass_CheckedChanged);
             // 
@@ -143,7 +143,7 @@ namespace MyLibraryEF.Forms
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(216, 35);
             this.btnRegister.TabIndex = 8;
-            this.btnRegister.Text = "ZAJERESTUJ SIĘ";
+            this.btnRegister.Text = "SIGN UP";
             this.btnRegister.UseVisualStyleBackColor = false;
             this.btnRegister.Click += new System.EventHandler(this.BtnRegister_Click);
             // 
@@ -158,18 +158,18 @@ namespace MyLibraryEF.Forms
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(216, 35);
             this.btnClear.TabIndex = 9;
-            this.btnClear.Text = "WYCZYŚĆ";
+            this.btnClear.Text = "CLEAR";
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.BtnClear_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(85, 424);
+            this.label5.Location = new System.Drawing.Point(68, 422);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(118, 23);
+            this.label5.Size = new System.Drawing.Size(148, 23);
             this.label5.TabIndex = 10;
-            this.label5.Text = "Posiam konto";
+            this.label5.Text = "I have an account";
             // 
             // labelToLogin
             // 
@@ -177,11 +177,11 @@ namespace MyLibraryEF.Forms
             this.labelToLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelToLogin.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelToLogin.ForeColor = System.Drawing.Color.DarkViolet;
-            this.labelToLogin.Location = new System.Drawing.Point(59, 458);
+            this.labelToLogin.Location = new System.Drawing.Point(68, 459);
             this.labelToLogin.Name = "labelToLogin";
-            this.labelToLogin.Size = new System.Drawing.Size(166, 23);
+            this.labelToLogin.Size = new System.Drawing.Size(143, 23);
             this.labelToLogin.TabIndex = 11;
-            this.labelToLogin.Text = "Wróć do logowania";
+            this.labelToLogin.Text = "Go back to login";
             this.labelToLogin.Click += new System.EventHandler(this.LabelToLogin_Click);
             // 
             // btnClose

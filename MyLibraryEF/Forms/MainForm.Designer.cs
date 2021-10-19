@@ -70,7 +70,7 @@ namespace MyLibraryEF
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(186, 60);
             this.btnSettings.TabIndex = 5;
-            this.btnSettings.Text = "Ustawienia";
+            this.btnSettings.Text = "Settings";
             this.btnSettings.UseVisualStyleBackColor = true;
             this.btnSettings.Click += new System.EventHandler(this.BtnSettings_Click);
             // 
@@ -85,7 +85,7 @@ namespace MyLibraryEF
             this.btnWanted.Name = "btnWanted";
             this.btnWanted.Size = new System.Drawing.Size(186, 60);
             this.btnWanted.TabIndex = 4;
-            this.btnWanted.Text = "Do kupienia";
+            this.btnWanted.Text = "Books to buy";
             this.btnWanted.UseVisualStyleBackColor = true;
             this.btnWanted.Click += new System.EventHandler(this.BtnWanted_Click);
             // 
@@ -100,7 +100,7 @@ namespace MyLibraryEF
             this.btnBorrowed.Name = "btnBorrowed";
             this.btnBorrowed.Size = new System.Drawing.Size(186, 60);
             this.btnBorrowed.TabIndex = 3;
-            this.btnBorrowed.Text = "Pożyczone";
+            this.btnBorrowed.Text = "Borrowed books";
             this.btnBorrowed.UseVisualStyleBackColor = true;
             this.btnBorrowed.Click += new System.EventHandler(this.BtnBorrowed_Click);
             // 
@@ -116,7 +116,7 @@ namespace MyLibraryEF
             this.btnMain.Name = "btnMain";
             this.btnMain.Size = new System.Drawing.Size(186, 60);
             this.btnMain.TabIndex = 2;
-            this.btnMain.Text = "Moje książki";
+            this.btnMain.Text = "My books";
             this.btnMain.UseVisualStyleBackColor = false;
             this.btnMain.Click += new System.EventHandler(this.BtnMain_Click);
             // 
@@ -139,9 +139,9 @@ namespace MyLibraryEF
             this.logoutLabel.ForeColor = System.Drawing.Color.LavenderBlush;
             this.logoutLabel.Location = new System.Drawing.Point(53, 65);
             this.logoutLabel.Name = "logoutLabel";
-            this.logoutLabel.Size = new System.Drawing.Size(75, 20);
+            this.logoutLabel.Size = new System.Drawing.Size(66, 20);
             this.logoutLabel.TabIndex = 2;
-            this.logoutLabel.Text = "Wyloguj";
+            this.logoutLabel.Text = "Logout";
             this.logoutLabel.Click += new System.EventHandler(this.LogoutLabel_Click);
             // 
             // userNameLabel
@@ -184,9 +184,9 @@ namespace MyLibraryEF
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblTitle.Location = new System.Drawing.Point(449, 35);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(208, 38);
+            this.lblTitle.Size = new System.Drawing.Size(166, 38);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Moje książki";
+            this.lblTitle.Text = "My books";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnMinimaliz

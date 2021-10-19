@@ -46,11 +46,11 @@ namespace MyLibraryEF.Forms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(131, 28);
+            this.label1.Location = new System.Drawing.Point(126, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(144, 17);
+            this.label1.Size = new System.Drawing.Size(158, 17);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Kto pożycza książkę?";
+            this.label1.Text = "Who borrows the book?";
             // 
             // btnOK
             // 
@@ -68,7 +68,7 @@ namespace MyLibraryEF.Forms
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(113, 56);
             this.btnClose.TabIndex = 3;
-            this.btnClose.Text = "Anuluj";
+            this.btnClose.Text = "Cancel";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 

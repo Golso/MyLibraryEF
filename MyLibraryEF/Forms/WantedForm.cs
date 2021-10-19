@@ -26,7 +26,7 @@ namespace MyLibraryEF.Forms
 
         private void LoadBooksList()
         {
-            BindingSource bi = _unitOfWork.BookRepository.BooksToBindingSource(userId, "Tak");
+            BindingSource bi = _unitOfWork.BookRepository.BooksToBindingSource(userId, "Yes");
 
             dataGridViewMain.DataSource = null;
             dataGridViewMain.DataSource = bi;
@@ -40,7 +40,7 @@ namespace MyLibraryEF.Forms
                 {
                     Title = titleText.Text,
                     Author = autorText.Text,
-                    ToBuy = "Tak",
+                    ToBuy = "Yes",
                     UserId = userId
                 };
 

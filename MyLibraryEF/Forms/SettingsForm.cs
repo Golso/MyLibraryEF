@@ -24,7 +24,7 @@ namespace MyLibraryEF.Forms
 
         private void BtnDeleteAccount_Click(object sender, EventArgs e)
         {
-            DialogResult delete = MessageBox.Show("Czy na pewno chcesz usunąć konto?", "Na pewno?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult delete = MessageBox.Show("Are you sure you want to delete your account?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (delete == DialogResult.Yes)
             {
                 _unitOfWork.UserRepository.RemoveUser(userId);

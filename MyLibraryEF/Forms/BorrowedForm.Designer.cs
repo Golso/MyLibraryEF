@@ -59,9 +59,9 @@ namespace MyLibraryEF.Forms
             // 
             this.btnReturn.Location = new System.Drawing.Point(15, 228);
             this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(257, 83);
+            this.btnReturn.Size = new System.Drawing.Size(265, 83);
             this.btnReturn.TabIndex = 1;
-            this.btnReturn.Text = "Zwrócone";
+            this.btnReturn.Text = "Book returned";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.BtnReturn_Click);
             // 
@@ -70,42 +70,42 @@ namespace MyLibraryEF.Forms
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 73);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 17);
+            this.label1.Size = new System.Drawing.Size(39, 17);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Tytuł:";
+            this.label1.Text = "Title:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 120);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 17);
+            this.label2.Size = new System.Drawing.Size(54, 17);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Autor:";
+            this.label2.Text = "Author:";
             // 
             // titleText
             // 
             this.titleText.Enabled = false;
-            this.titleText.Location = new System.Drawing.Point(61, 73);
+            this.titleText.Location = new System.Drawing.Point(82, 73);
             this.titleText.Name = "titleText";
-            this.titleText.Size = new System.Drawing.Size(211, 22);
+            this.titleText.Size = new System.Drawing.Size(198, 22);
             this.titleText.TabIndex = 4;
             // 
             // autorText
             // 
             this.autorText.Enabled = false;
-            this.autorText.Location = new System.Drawing.Point(64, 117);
+            this.autorText.Location = new System.Drawing.Point(82, 120);
             this.autorText.Name = "autorText";
-            this.autorText.Size = new System.Drawing.Size(208, 22);
+            this.autorText.Size = new System.Drawing.Size(198, 22);
             this.autorText.TabIndex = 5;
             // 
             // whoText
             // 
             this.whoText.Enabled = false;
-            this.whoText.Location = new System.Drawing.Point(66, 163);
+            this.whoText.Location = new System.Drawing.Point(82, 163);
             this.whoText.Name = "whoText";
             this.whoText.ReadOnly = true;
-            this.whoText.Size = new System.Drawing.Size(206, 22);
+            this.whoText.Size = new System.Drawing.Size(198, 22);
             this.whoText.TabIndex = 7;
             // 
             // label3
@@ -113,9 +113,9 @@ namespace MyLibraryEF.Forms
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 166);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 17);
+            this.label3.Size = new System.Drawing.Size(69, 17);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Komu:";
+            this.label3.Text = "To whom:";
             // 
             // BorrowedForm
             // 

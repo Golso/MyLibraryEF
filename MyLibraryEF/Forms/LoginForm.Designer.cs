@@ -50,19 +50,19 @@ namespace MyLibraryEF.Forms
             this.labelCreate.ForeColor = System.Drawing.Color.DarkViolet;
             this.labelCreate.Location = new System.Drawing.Point(82, 420);
             this.labelCreate.Name = "labelCreate";
-            this.labelCreate.Size = new System.Drawing.Size(120, 23);
+            this.labelCreate.Size = new System.Drawing.Size(129, 23);
             this.labelCreate.TabIndex = 23;
-            this.labelCreate.Text = "Utwórz konto";
+            this.labelCreate.Text = "Create account";
             this.labelCreate.Click += new System.EventHandler(this.LabelCreate_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(66, 385);
+            this.label5.Location = new System.Drawing.Point(49, 385);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(171, 23);
+            this.label5.Size = new System.Drawing.Size(195, 23);
             this.label5.TabIndex = 22;
-            this.label5.Text = "Nie posiadam konta";
+            this.label5.Text = "I don\'t have an account";
             // 
             // btnClear
             // 
@@ -75,7 +75,7 @@ namespace MyLibraryEF.Forms
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(216, 35);
             this.btnClear.TabIndex = 21;
-            this.btnClear.Text = "WYCZYŚĆ";
+            this.btnClear.Text = "CLEAR";
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.BtnClear_Click);
             // 
@@ -90,7 +90,7 @@ namespace MyLibraryEF.Forms
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(216, 35);
             this.btnLogin.TabIndex = 20;
-            this.btnLogin.Text = "ZALOGUJ";
+            this.btnLogin.Text = "LOG IN";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.BtnLogin_Click);
             // 
@@ -100,11 +100,11 @@ namespace MyLibraryEF.Forms
             this.checkBoxShowPass.Cursor = System.Windows.Forms.Cursors.Hand;
             this.checkBoxShowPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkBoxShowPass.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxShowPass.Location = new System.Drawing.Point(134, 244);
+            this.checkBoxShowPass.Location = new System.Drawing.Point(105, 244);
             this.checkBoxShowPass.Name = "checkBoxShowPass";
-            this.checkBoxShowPass.Size = new System.Drawing.Size(120, 27);
+            this.checkBoxShowPass.Size = new System.Drawing.Size(153, 27);
             this.checkBoxShowPass.TabIndex = 19;
-            this.checkBoxShowPass.Text = "Pokaż hasło";
+            this.checkBoxShowPass.Text = "Show password";
             this.checkBoxShowPass.UseVisualStyleBackColor = true;
             this.checkBoxShowPass.CheckedChanged += new System.EventHandler(this.CheckBoxShowPass_CheckedChanged);
             // 
@@ -126,9 +126,9 @@ namespace MyLibraryEF.Forms
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(36, 185);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 23);
+            this.label3.Size = new System.Drawing.Size(85, 23);
             this.label3.TabIndex = 15;
-            this.label3.Text = "Hasło";
+            this.label3.Text = "Password";
             // 
             // txtUsername
             // 

@@ -49,7 +49,7 @@ namespace MyLibraryEF.Forms
             this.btnAddBook.Name = "btnAddBook";
             this.btnAddBook.Size = new System.Drawing.Size(257, 48);
             this.btnAddBook.TabIndex = 2;
-            this.btnAddBook.Text = "Dodaj";
+            this.btnAddBook.Text = "Add";
             this.btnAddBook.UseVisualStyleBackColor = true;
             this.btnAddBook.Click += new System.EventHandler(this.BtnAddBook_Click);
             // 
@@ -58,24 +58,24 @@ namespace MyLibraryEF.Forms
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 75);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 17);
+            this.label1.Size = new System.Drawing.Size(39, 17);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Tytuł:";
+            this.label1.Text = "Title:";
             // 
             // titleText
             // 
-            this.titleText.Location = new System.Drawing.Point(58, 75);
+            this.titleText.Location = new System.Drawing.Point(71, 75);
             this.titleText.Name = "titleText";
-            this.titleText.Size = new System.Drawing.Size(211, 22);
+            this.titleText.Size = new System.Drawing.Size(198, 22);
             this.titleText.TabIndex = 0;
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(12, 329);
+            this.btnDelete.Location = new System.Drawing.Point(12, 328);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(257, 47);
+            this.btnDelete.Size = new System.Drawing.Size(257, 48);
             this.btnDelete.TabIndex = 5;
-            this.btnDelete.Text = "Usuń";
+            this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
@@ -96,21 +96,21 @@ namespace MyLibraryEF.Forms
             // 
             // btnUpdateBook
             // 
-            this.btnUpdateBook.Location = new System.Drawing.Point(12, 281);
+            this.btnUpdateBook.Location = new System.Drawing.Point(12, 274);
             this.btnUpdateBook.Name = "btnUpdateBook";
-            this.btnUpdateBook.Size = new System.Drawing.Size(257, 42);
+            this.btnUpdateBook.Size = new System.Drawing.Size(257, 48);
             this.btnUpdateBook.TabIndex = 4;
-            this.btnUpdateBook.Text = "Edytuj";
+            this.btnUpdateBook.Text = "Edit";
             this.btnUpdateBook.UseVisualStyleBackColor = true;
             this.btnUpdateBook.Click += new System.EventHandler(this.BtnUpdateBook_Click);
             // 
             // btnBorrow
             // 
-            this.btnBorrow.Location = new System.Drawing.Point(12, 221);
+            this.btnBorrow.Location = new System.Drawing.Point(12, 220);
             this.btnBorrow.Name = "btnBorrow";
-            this.btnBorrow.Size = new System.Drawing.Size(257, 54);
+            this.btnBorrow.Size = new System.Drawing.Size(257, 48);
             this.btnBorrow.TabIndex = 3;
-            this.btnBorrow.Text = "Pożycz";
+            this.btnBorrow.Text = "Borrow";
             this.btnBorrow.UseVisualStyleBackColor = true;
             this.btnBorrow.Click += new System.EventHandler(this.BtnBorrow_Click);
             // 
@@ -119,15 +119,15 @@ namespace MyLibraryEF.Forms
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(9, 124);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 17);
+            this.label2.Size = new System.Drawing.Size(54, 17);
             this.label2.TabIndex = 10;
-            this.label2.Text = "Autor:";
+            this.label2.Text = "Author:";
             // 
             // autorText
             // 
-            this.autorText.Location = new System.Drawing.Point(58, 124);
+            this.autorText.Location = new System.Drawing.Point(71, 124);
             this.autorText.Name = "autorText";
-            this.autorText.Size = new System.Drawing.Size(211, 22);
+            this.autorText.Size = new System.Drawing.Size(198, 22);
             this.autorText.TabIndex = 1;
             // 
             // lblBooksAmount
@@ -135,9 +135,9 @@ namespace MyLibraryEF.Forms
             this.lblBooksAmount.AutoSize = true;
             this.lblBooksAmount.Location = new System.Drawing.Point(288, 407);
             this.lblBooksAmount.Name = "lblBooksAmount";
-            this.lblBooksAmount.Size = new System.Drawing.Size(179, 17);
+            this.lblBooksAmount.Size = new System.Drawing.Size(165, 17);
             this.lblBooksAmount.TabIndex = 12;
-            this.lblBooksAmount.Text = "Ilość posiadanych książek: ";
+            this.lblBooksAmount.Text = "Number of books owned:";
             // 
             // txtBoxTitleSearch
             // 
@@ -145,7 +145,7 @@ namespace MyLibraryEF.Forms
             this.txtBoxTitleSearch.Name = "txtBoxTitleSearch";
             this.txtBoxTitleSearch.Size = new System.Drawing.Size(446, 22);
             this.txtBoxTitleSearch.TabIndex = 13;
-            this.txtBoxTitleSearch.Text = "Szukaj po tytule...";
+            this.txtBoxTitleSearch.Text = "Search by title...";
             this.txtBoxTitleSearch.TextChanged += new System.EventHandler(this.TxtBoxTitleSearch_TextChanged);
             // 
             // MyBooksForm

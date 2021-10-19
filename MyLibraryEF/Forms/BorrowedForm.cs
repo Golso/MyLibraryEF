@@ -39,7 +39,7 @@ namespace MyLibraryEF.Forms
             {
                 Title = titleText.Text,
                 Author = autorText.Text,
-                ToBuy = "Nie",
+                ToBuy = "No",
                 UserId = userId
             };
 

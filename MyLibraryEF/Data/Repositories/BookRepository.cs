@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace MyLibraryEF.Data
 {
-    class BookRepository : IBookRepo
+    public class BookRepository : IBookRepo
     {
         private readonly LibraryContext _libContext;
 
@@ -21,7 +21,7 @@ namespace MyLibraryEF.Data
 
         public int GetAmountOfBooks(int userID)
         {
-            int amountOfBooks = _libContext.Books.Where(book => book.UserId == userID && book.ToBuy == "Nie").Count();
+            int amountOfBooks = _libContext.Books.Where(book => book.UserId == userID && book.ToBuy == "No").Count();
 
             return amountOfBooks;
         }
@@ -36,7 +36,7 @@ namespace MyLibraryEF.Data
         public void UpdateToBuyOfBook(int currentId)
         {
             Book book = _libContext.Books.Find(currentId);
-            book.ToBuy = "Nie";
+            book.ToBuy = "No";
         }
 
         public void RemoveBook(int currentId)

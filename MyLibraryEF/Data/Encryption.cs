@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MyLibraryEF.Data
 {
-    internal class Encryption
+    class Encryption
     {
         internal string HashPassword(string password)
         {
