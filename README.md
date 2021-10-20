@@ -15,12 +15,9 @@ In application we can:
 * make to buy lists
 * 2 color modes to choose
 
-![LibraryAnimation](https://user-images.githubusercontent.com/36167926/132017688-da3b05fa-f574-4243-bcf8-b9c78544254f.gif)
+![LibraryAnimation](https://user-images.githubusercontent.com/36167926/138175534-f6859dd5-c575-47a8-b437-4819cc490acd.gif)
 # Technologies
 * C#
 * WinForms
 * Entity Framework
 * Microsoft SQL Server
-
-
-
