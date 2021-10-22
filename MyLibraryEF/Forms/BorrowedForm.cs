@@ -1,4 +1,5 @@
 ﻿using MyLibraryEF.Data;
+using MyLibraryEF.Data.Interfaces;
 using MyLibraryEF.Models;
 using System;
 using System.Drawing;
@@ -10,7 +11,7 @@ namespace MyLibraryEF.Forms
     {
         private int currentId = 0;
         private readonly int userId;
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
         public BorrowedForm(int userId)
         {
@@ -45,7 +46,7 @@ namespace MyLibraryEF.Forms
 
             _unitOfWork.BookRepository.AddBook(book);
             _unitOfWork.BorrowedBookRepository.RemoveBorrowedBook(currentId);
-            _unitOfWork.Save();
+            _unitOfWork.SaveChanges();
 
             currentId = 0;
             titleText.Text = "";

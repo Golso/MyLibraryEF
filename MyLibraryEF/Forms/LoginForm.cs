@@ -1,4 +1,5 @@
 ﻿using MyLibraryEF.Data;
+using MyLibraryEF.Data.Interfaces;
 using System;
 using System.Windows.Forms;
 
@@ -6,7 +7,7 @@ namespace MyLibraryEF.Forms
 {
     public partial class LoginForm : Form
     {
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
         public LoginForm()
         {

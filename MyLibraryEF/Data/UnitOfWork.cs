@@ -2,7 +2,7 @@
 
 namespace MyLibraryEF.Data
 {
-    public class UnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private IUserRepo _userRepository;
         private IBookRepo _bookRepository;
@@ -50,7 +50,7 @@ namespace MyLibraryEF.Data
             }
         }
 
-        public void Save()
+        public void SaveChanges()
         {
             _libContext.SaveChanges();
         }

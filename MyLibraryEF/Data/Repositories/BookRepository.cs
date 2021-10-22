@@ -62,7 +62,7 @@ namespace MyLibraryEF.Data
             BindingSource bi = new BindingSource();
 
             var query = _libContext.Books
-                .Where(book => book.UserId == userId && book.Title.Contains(searchText))
+                .Where(book => book.UserId == userId && book.ToBuy == "No" && book.Title.Contains(searchText))
                 .Select(book => new { book.Id, book.Title, book.Author }).ToList();
 
             bi.DataSource = query;

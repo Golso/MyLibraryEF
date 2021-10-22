@@ -1,4 +1,5 @@
 ﻿using MyLibraryEF.Data;
+using MyLibraryEF.Data.Interfaces;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -9,7 +10,7 @@ namespace MyLibraryEF.Forms
     {
         private readonly int userId;
         private readonly MainForm main;
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
         public SettingsForm(int userId, MainForm main)
         {
             this.userId = userId;
@@ -28,7 +29,7 @@ namespace MyLibraryEF.Forms
             if (delete == DialogResult.Yes)
             {
                 _unitOfWork.UserRepository.RemoveUser(userId);
-                _unitOfWork.Save();
+                _unitOfWork.SaveChanges();
 
                 new LoginForm().Show();
                 main.Hide();
@@ -38,7 +39,7 @@ namespace MyLibraryEF.Forms
         private void BtnNormalMode_Click(object sender, EventArgs e)
         {
             _unitOfWork.UserRepository.ChangeStateOfUser(userId, 0);
-            _unitOfWork.Save();
+            _unitOfWork.SaveChanges();
 
             main.ChangeMode(0);
             SetMode(0);
@@ -47,7 +48,7 @@ namespace MyLibraryEF.Forms
         private void BtnBlackMode_Click(object sender, EventArgs e)
         {
             _unitOfWork.UserRepository.ChangeStateOfUser(userId, 1);
-            _unitOfWork.Save();
+            _unitOfWork.SaveChanges();
 
             main.ChangeMode(1);
             SetMode(1);

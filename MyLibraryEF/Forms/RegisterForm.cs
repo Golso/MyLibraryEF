@@ -1,4 +1,5 @@
 ﻿using MyLibraryEF.Data;
+using MyLibraryEF.Data.Interfaces;
 using MyLibraryEF.Models;
 using System;
 using System.Windows.Forms;
@@ -7,7 +8,7 @@ namespace MyLibraryEF.Forms
 {
     public partial class RegisterForm : Form
     {
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
         public RegisterForm()
         {
             InitializeComponent();
@@ -50,7 +51,7 @@ namespace MyLibraryEF.Forms
                     user.State = 0;
 
                     _unitOfWork.UserRepository.AddUser(user);
-                    _unitOfWork.Save();
+                    _unitOfWork.SaveChanges();
 
                     txtUsername.Text = "";
                     txtPassword.Text = "";

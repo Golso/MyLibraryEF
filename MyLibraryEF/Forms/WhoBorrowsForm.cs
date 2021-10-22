@@ -1,4 +1,5 @@
 ﻿using MyLibraryEF.Data;
+using MyLibraryEF.Data.Interfaces;
 using MyLibraryEF.Models;
 using System;
 using System.Windows.Forms;
@@ -10,7 +11,7 @@ namespace MyLibraryEF.Forms
         private readonly BorrowedBook bookBorrowed;
         private readonly int currentId;
         private readonly MyBooksForm form;
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
         public WhoBorrowsForm(BorrowedBook bookBorrowed, int currentId, MyBooksForm form)
         {
@@ -31,7 +32,7 @@ namespace MyLibraryEF.Forms
 
                 _unitOfWork.BorrowedBookRepository.AddBorrowedBook(bookBorrowed);
                 _unitOfWork.BookRepository.RemoveBook(currentId);
-                _unitOfWork.Save();
+                _unitOfWork.SaveChanges();
 
                 form.LoadBooksList();
 
@@ -43,7 +44,6 @@ namespace MyLibraryEF.Forms
             else
             {
                 MessageBox.Show("Providing the name of the borrower is required.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
             }
         }
 

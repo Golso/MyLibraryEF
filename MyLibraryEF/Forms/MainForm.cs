@@ -1,4 +1,5 @@
 ﻿using MyLibraryEF.Data;
+using MyLibraryEF.Data.Interfaces;
 using MyLibraryEF.Forms;
 using System;
 using System.Drawing;
@@ -21,7 +22,7 @@ namespace MyLibraryEF
               int nHeightEllipse
           );
 
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
         private readonly int userId;
         private readonly int userState;
